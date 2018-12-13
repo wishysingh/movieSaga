@@ -10,7 +10,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import SearchMovie from 'containers/SearchMovie/Loadable';
+import MovieDetails from 'containers/MovieDetails/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -19,7 +20,9 @@ export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={SearchMovie} />
+        <Route exact path="/:movies" component={SearchMovie} />
+        <Route exact path="/movies/:movieName" component={MovieDetails} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
