@@ -1,13 +1,14 @@
+import { API_CALL, API_SUCCESS } from './constants';
 export function apicall(id) {
   return {
-    type: 'Api_Call',
+    type: API_CALL,
     id,
   };
 }
 
 export function getMovieSuccess(movieData) {
   return {
-    type: 'Api_Success',
+    type: API_SUCCESS,
     payload: movieData,
   };
 }

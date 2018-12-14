@@ -1,13 +1,20 @@
+import {
+  API_CALL,
+  SEARCH_CHANGE,
+  API_SUCCESS,
+  INITIAL_STATE,
+} from './constants';
+
 export function apicall(text) {
   return {
-    type: 'Api_Call',
+    type: API_CALL,
     text,
   };
 }
 
 export function getMovieSuccess(movieData) {
   return {
-    type: 'Api_Success',
+    type: API_SUCCESS,
     payload1: movieData.results,
     payload2: movieData.total_pages,
   };
@@ -15,14 +22,14 @@ export function getMovieSuccess(movieData) {
 
 export function searchChange(event) {
   return {
-    type: 'Search_Change',
+    type: SEARCH_CHANGE,
     payload: event.target.value,
   };
 }
 
 export function initialState(text) {
   return {
-    type: 'Initial_State',
+    type: INITIAL_STATE,
     payload: text,
   };
 }

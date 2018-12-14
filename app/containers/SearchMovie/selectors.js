@@ -7,14 +7,6 @@ import { initialState } from './reducer';
 
 const selectSearchMovieDomain = state => state.get('searchMovie', initialState);
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by SearchMovie
- */
-
 const makeSelectSearchMovie = () =>
   createSelector(selectSearchMovieDomain, substate =>
     substate.get('searchtext'),

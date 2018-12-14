@@ -5,12 +5,13 @@
  */
 
 import { fromJS } from 'immutable';
+import { API_SUCCESS } from './constants';
 
 export const initialState = fromJS({ movies: [] });
 
 function movieDetailsReducer(state = initialState, action) {
   switch (action.type) {
-    case 'Api_Success':
+    case API_SUCCESS:
       return state.set('movies', action.payload);
 
     default:

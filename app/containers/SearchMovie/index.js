@@ -47,21 +47,29 @@ export class SearchMovie extends React.PureComponent {
   componentDidMount() {
     this.setState(
       {
-        loader: true,
         renderapi: !this.props.match.params.movies
           ? movieListApi
           : searchList(this.props.match.params.movies),
+      },
+      this.api.bind(this),
+    );
+  }
+
+  api() {
+    this.setState(
+      {
+        loader: true,
       },
       () => {
         this.props.apicall(
           this.state.renderapi +
             queryString.parse(this.props.location.search).pageNo,
         );
+        this.setState({
+          loader: false,
+        });
       },
     );
-    this.setState({
-      loader: false,
-    });
   }
 
   onSearchClick() {
@@ -70,58 +78,26 @@ export class SearchMovie extends React.PureComponent {
     } else this.props.history.push('/');
     this.setState(
       {
-        loader: true,
         renderapi: this.props.searchtext
           ? searchList(this.props.searchtext)
           : movieListApi,
       },
-      () => {
-        this.props.apicall(this.state.renderapi);
-      },
+      this.api,
     );
-    this.setState({
-      loader: false,
-    });
   }
 
   next() {
     const no = Number(queryString.parse(this.props.location.search).pageNo);
     const num = no + 1;
     this.props.history.push(`/${this.props.match.params.movies}?pageNo=${num}`);
-    this.setState(
-      {
-        loader: true,
-      },
-      () => {
-        this.props.apicall(
-          this.state.renderapi +
-            queryString.parse(this.props.location.search).pageNo,
-        );
-      },
-    );
-    this.setState({
-      loader: false,
-    });
+    this.api();
   }
 
   prev() {
     const no = Number(queryString.parse(this.props.location.search).pageNo);
     const num = no - 1;
     this.props.history.push(`/${this.props.match.params.movies}?pageNo=${num}`);
-    this.setState(
-      {
-        loader: true,
-      },
-      () => {
-        this.props.apicall(
-          this.state.renderapi +
-            queryString.parse(this.props.location.search).pageNo,
-        );
-      },
-    );
-    this.setState({
-      loader: false,
-    });
+    this.api();
   }
 
   render() {

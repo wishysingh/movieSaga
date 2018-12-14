@@ -4,6 +4,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import * as action from './actions';
+import { API_CALL } from './constants';
 
 export function* apiCall(movie) {
   try {
@@ -28,5 +29,5 @@ function api(movie) {
 }
 
 export default function* movieDetailsSaga() {
-  yield takeEvery('Api_Call', apiCall);
+  yield takeEvery(API_CALL, apiCall);
 }

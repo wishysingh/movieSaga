@@ -120,6 +120,13 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
+// const mapStateToProps = state => ({
+//   movies: state.detailsMovies.movies,
+// });
+// const mapDispatchToProps = dispatch => ({
+//   apicall: text => dispatch(apicall(text)),
+// });
+
 const withReducer = injectReducer({ key: 'movieDetails', reducer });
 const withSaga = injectSaga({ key: 'movieDetails', saga });
 

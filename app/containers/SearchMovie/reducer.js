@@ -5,6 +5,7 @@
  */
 
 import { fromJS } from 'immutable';
+import { SEARCH_CHANGE, API_SUCCESS, INITIAL_STATE } from './constants';
 
 export const initialState = fromJS({
   searchtext: '',
@@ -14,14 +15,14 @@ export const initialState = fromJS({
 
 function searchMovieReducer(state = initialState, action) {
   switch (action.type) {
-    case 'Search_Change':
+    case SEARCH_CHANGE:
       // return Object.assign({}, state, { searchtext: action.payload });
       return state.set('searchtext', action.payload);
-    case 'Initial_State':
+    case INITIAL_STATE:
       // return Object.assign({}, state, { searchtext: action.payload });
       return state.set('searchtext', action.payload);
 
-    case 'Api_Success':
+    case API_SUCCESS:
       return state
         .set('movies', action.payload1)
         .set('maxpage', action.payload2);

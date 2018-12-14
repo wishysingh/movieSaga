@@ -1,16 +1,12 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class Movies extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div>
-        {console.log(this.props)}
         <h2>{this.props.movies.original_title}</h2>
         {this.props.movies.backdrop_path ? (
           <Link
@@ -34,3 +30,7 @@ class Movies extends React.Component {
 }
 
 export default Movies;
+
+Movies.propTypes = {
+  movies: PropTypes.object,
+};
